@@ -1,27 +1,29 @@
 # ListaRombola
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+## Funcionamiento
+Los datos son generados de manera aleatoria cada vez que se carga la aplicación, por lo que siempre habrán resultados diferentes.
+## Reglas Aplicadas
+### Color Nombre Alumno:
+> Verde: Si el alumno aprobó (Nota >= 6)
+> Rojo: Si el alumno no aprobó (Nota < 6)
+> Negro: El usuario NO se encuentra activo.
 
-## Development server
+### Icono junto al nombre del alumno:
+Depende de la carrera, pudiendo ser:
+> Medicina: Corazón.
+> Música: Nota musical
+> Sistemas: Pc.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Alumno inactivo:
+Si el alumno se encuentra inactivo -> se muestra un mensaje en el panel (ngTemplate).
+Sino, se muestra la información correspondiente.
 
-## Code scaffolding
+### Background panel colapsable:
+> Verde: Alumno aprobado.
+> Rojo: Alumno desaprobado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Info panel colapsable - Promedio:
+> Se usa un pipe para truncar la cantidad de decimales. 
+> Se muestra un ícono diferente en caso de aprobado/desaprobado.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

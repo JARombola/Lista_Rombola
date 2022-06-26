@@ -1,0 +1,42 @@
+<app-topbar></app-topbar>
+    <div class="accordion " id="accordionExample">
+        <div class="accordion-item" *ngFor="let a of alumnos">
+          <h2 class="accordion-header " [id]="'heading'+a.nombre" *ngIf= "!soloAprobados || soloAprobados && a.nota >= 6">
+            <button class="accordion-button collapsed" [ngClass] = "setClases(a)" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#c'+a.id" aria-expanded="true" [attr.aria-controls]="'c'+a.id">
+            <i class="bi bi-music-note" *ngIf="a.carrera == 'Música'"></i>
+            <i class="bi bi-laptop" *ngIf="a.carrera == 'Sistemas'"></i>
+            <i class="bi bi-heart-pulse" *ngIf="a.carrera == 'Medicina'"></i>
+            {{a.nombre | uppercase}}
+            </button>
+          </h2>
+          <div [id]="'c'+a.id" class="accordion-collapse collapse" aria-labelledby="heading">
+            <div class="accordion-body bg-opacity-10" [ngClass]="setClasesPanel(a)" *ngIf= "!!a.activo else inactivo" >
+                <div>
+                    <p>
+                        <b>Nombre:</b> {{a.nombre}}
+                    </p>
+                    <p>
+                        <b>Edad:</b> {{a.edad}}
+                    </p>
+                    <p>
+                        <b>Promedio:</b> {{a.nota | number:'1.0-2'}} <i class="bi h3" [ngClass]=" a.nota >= 6 ? 'bi-check-circle text-success' : 'bi-x-circle text-danger'"></i>
+                    </p>
+                    <p>
+                        <b>Carrera:</b> {{a.carrera}} 
+                    </p>
+                </div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="checkAprobados" value="" (change)= "soloAprobados=!soloAprobados">
+        <label class="form-check-label" for="checkAprobados">Solo aprobados</label>
+      </div>
+
+      <ng-template #inactivo>
+        <div class="alert alert-warning" role="alert">
+            El alumno se encuentra INACTIVO.
+          </div>
+    </ng-template>
